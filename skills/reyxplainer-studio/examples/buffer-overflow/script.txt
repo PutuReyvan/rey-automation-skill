@@ -1,0 +1,11 @@
+This is a buffer. It has room for four bytes.
+
+Copy three ASCII letters and the zero byte that ends the string. All four fit.
+
+Add one letter. Without a size check, the terminating zero is now outside the buffer.
+
+An unchecked copy can corrupt other data or crash. This is a simplified picture, not a guaranteed memory layout.
+
+Check the length against capacity, including the terminator. Reject input that cannot fit.
+
+Congratulations. You just learned how a buffer overflow works.

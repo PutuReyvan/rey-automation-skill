@@ -1,0 +1,13 @@
+node_modules/
+.env
+.env.*
+.DS_Store
+Thumbs.db
+out/
+dist/
+renders/
+*.mp4
+*.mov
+*.wav
+*.mp3
+

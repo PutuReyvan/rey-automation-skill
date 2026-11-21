@@ -1,0 +1,4 @@
+import fs from 'node:fs';
+import {pathToFileURL} from 'node:url';
+export function group(words){if(!Array.isArray(words))throw Error('Expected word array');let prev=0;const result=[];let current=null;for(const w of words){if(!w||typeof w.word!=='string'||!w.word.trim()||!Number.isFinite(w.start)||!Number.isFinite(w.end)||w.start<prev||w.end<=w.start)throw Error('Invalid word timing');if(!current||current.count===4||w.start-current.end>0.35||w.end-current.start>2){current={start:w.start,end:w.end,text:w.word,count:1};result.push(current);}else{current.text+=' '+w.word;current.end=w.end;current.count++;}prev=w.end;}return result.map(({count,...x})=>x);}
+if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){try{const out=group(JSON.parse(fs.readFileSync(process.argv[2],'utf8')));fs.writeFileSync(process.argv[3],JSON.stringify(out,null,2)+'\n',{flag:'wx'});}catch(e){console.error(e.message);process.exitCode=1;}}

@@ -1,0 +1,68 @@
+{
+  "title": "Buffer Overflow",
+  "fps": 30,
+  "width": 1080,
+  "height": 1920,
+  "scenes": [
+    {
+      "id": "s1",
+      "mode": "intro",
+      "frames": 180,
+      "title": "Four little boxes",
+      "caption": "A buffer is a fixed region of memory.",
+      "code": "char buf[4];",
+      "input": "",
+      "narration": "This is a buffer. It has room for four bytes."
+    },
+    {
+      "id": "s2",
+      "mode": "safe",
+      "frames": 270,
+      "title": "Three letters fit",
+      "caption": "CAT + NUL = 4 bytes",
+      "code": "char buf[4];",
+      "input": "CAT",
+      "narration": "Copy three ASCII letters and the zero byte that ends the string. All four fit."
+    },
+    {
+      "id": "s3",
+      "mode": "overflow",
+      "frames": 270,
+      "title": "One extra letter",
+      "caption": "CATS + NUL = 5 bytes",
+      "code": "char buf[4];",
+      "input": "CATS",
+      "narration": "Add one letter. Without a size check, the terminating zero is now outside the buffer."
+    },
+    {
+      "id": "s4",
+      "mode": "overflow",
+      "frames": 300,
+      "title": "Keep writing?",
+      "caption": "Writing outside the buffer is undefined behavior.",
+      "code": "char buf[4];",
+      "input": "ABCDEFG",
+      "narration": "An unchecked copy can corrupt other data or crash. This is a simplified picture, not a guaranteed memory layout."
+    },
+    {
+      "id": "s5",
+      "mode": "defense",
+      "frames": 240,
+      "title": "Check before copying",
+      "caption": "Allow at most 3 ASCII characters plus NUL.",
+      "code": "if (len < sizeof buf) { ... }",
+      "input": "CATS",
+      "narration": "Check the length against capacity, including the terminator. Reject input that cannot fit."
+    },
+    {
+      "id": "s6",
+      "mode": "recap",
+      "frames": 90,
+      "title": "Buffer overflow",
+      "caption": "You just learned how a buffer overflow works.",
+      "code": "",
+      "input": "",
+      "narration": "Congratulations. You just learned how a buffer overflow works."
+    }
+  ]
+}
