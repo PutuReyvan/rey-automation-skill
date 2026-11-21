@@ -19,30 +19,49 @@ Run these commands from the project where Claude Code will make videos.
 ### PowerShell
 
 ```powershell
-git clone https://github.com/PutuReyvan/rey-automation-skill.git .rey-automation-skill
-New-Item -ItemType Directory -Force .claude/skills | Out-Null
-Copy-Item -Recurse -Force .rey-automation-skill/skills/* .claude/skills/
+if (Test-Path .rey-automation-skill/.git) {
+  git -C .rey-automation-skill pull --ff-only
+} else {
+  git clone https://github.com/PutuReyvan/rey-automation-skill.git .rey-automation-skill
+}
+powershell -ExecutionPolicy Bypass -File .rey-automation-skill/install.ps1 -ProjectRoot . -Agent claude
 ```
 
 ### macOS or Linux
 
 ```bash
-git clone https://github.com/PutuReyvan/rey-automation-skill.git .rey-automation-skill
-mkdir -p .claude/skills
-cp -R .rey-automation-skill/skills/* .claude/skills/
+if [ -d .rey-automation-skill/.git ]; then
+  git -C .rey-automation-skill pull --ff-only
+else
+  git clone https://github.com/PutuReyvan/rey-automation-skill.git .rey-automation-skill
+fi
+bash .rey-automation-skill/install.sh . claude
 ```
 
-Start a new Claude Code session in that project so it discovers the installed skills.
+The installer reads `skills.txt`, refuses an incomplete repository, copies every listed skill and verifies each installed `SKILL.md`. Start a new Claude Code session in that project so it reloads the skills.
 
 ## Install for Codex
 
-Use the same process, but copy the skill folders to `.agents/skills/`:
+Use the same installer with the Codex target:
 
 ```powershell
-git clone https://github.com/PutuReyvan/rey-automation-skill.git .rey-automation-skill
-New-Item -ItemType Directory -Force .agents/skills | Out-Null
-Copy-Item -Recurse -Force .rey-automation-skill/skills/* .agents/skills/
+if (Test-Path .rey-automation-skill/.git) {
+  git -C .rey-automation-skill pull --ff-only
+} else {
+  git clone https://github.com/PutuReyvan/rey-automation-skill.git .rey-automation-skill
+}
+powershell -ExecutionPolicy Bypass -File .rey-automation-skill/install.ps1 -ProjectRoot . -Agent codex
 ```
+
+## Verify the repository
+
+Run this from the cloned repository:
+
+```powershell
+node scripts/verify-skills.mjs
+```
+
+It fails unless all three skill directories, their `SKILL.md` entry points and their README listings agree. The same check runs automatically on every GitHub push and pull request.
 
 ## Try the absurd-story workflow
 
