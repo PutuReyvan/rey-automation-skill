@@ -15,8 +15,8 @@ const skills = read(manifestPath)
 
 assert.deepEqual(
   skills,
-  ['reyxplainer-studio', 'rey-absurd-shorts', 'inkbeat-shorts'],
-  'The required three-skill manifest changed unexpectedly',
+  ['reyxplainer-studio', 'rey-absurd-shorts', 'rey-horror-shorts', 'inkbeat-shorts'],
+  'The required four-skill manifest changed unexpectedly',
 );
 
 const readme = read(path.join(root, 'README.md'));

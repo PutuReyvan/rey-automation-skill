@@ -8,6 +8,7 @@ Reusable Claude Code and Codex skills for producing original vertical Remotion v
 |---|---|
 | `reyxplainer-studio` v0.2.1 | Programming, cybersecurity and computer-science explainers with mechanism-first visuals, active presenters, word-synced captions, music, SFX, render and QA rules |
 | `rey-absurd-shorts` v0.1 | 60–90 second fictional absurd stories with original blocky toy-game 3D characters, escalating world rules, monster comedy and fast scene variety |
+| `rey-horror-shorts` v0.1 | 60–90 second rule-based horror stories with serious narration, coherent monsters, original 3D or 2D visuals and logically resolved endings |
 | `inkbeat-shorts` | Shared toon-character, acting, camera and visual references used by the production skills |
 
 The skills do not require paid APIs. Voice, image or asset services are optional and must be approved separately.
@@ -61,7 +62,15 @@ Run this from the cloned repository:
 node scripts/verify-skills.mjs
 ```
 
-It fails unless all three skill directories, their `SKILL.md` entry points and their README listings agree. The same check runs automatically on every GitHub push and pull request.
+It fails unless all four skill directories, their `SKILL.md` entry points and their README listings agree. The same check runs automatically on every GitHub push and pull request.
+
+## Try the horror workflow
+
+```text
+Use rey-horror-shorts to draft an 80–90 second English vertical story beginning with “In this town...”.
+
+The premise may be impossible, but the monster must obey a consistent rule. Establish two observable clues before the climax. The protagonist must test the weakness, use it to defeat or securely contain the threat, and end with a lasting solution for the town. Use an original blocky toon 3D cast and serious documentary narration. Give me only the voice-over script first.
+```
 
 ## Try the absurd-story workflow
 
@@ -108,6 +117,7 @@ The initializer refuses to overwrite an existing destination. Check current Remo
 - A new color or label is not a new scene. Change location, framing, action, visual mode or revealed relationship.
 - Treat presenters as actors, not decoration. Use expressions, gestures, head/body motion and honest word-driven mouth animation.
 - Connect labels, statuses, enlarged views and data blocks to their source. Verify diagram geometry and counts against the narration.
+- In horror, establish the threat's mechanism before the climax and make the protagonist's tested solution resolve the central problem.
 - Inspect targeted stills, a contact sheet, the complete video and the audio mix before claiming success.
 
 ## Repository layout
@@ -116,6 +126,7 @@ The initializer refuses to overwrite an existing destination. Check current Remo
 skills/
   reyxplainer-studio/
   rey-absurd-shorts/
+  rey-horror-shorts/
   inkbeat-shorts/
 ```
 
