@@ -1,6 +1,15 @@
 # Visual language
 
-Follow creator-supplied references and their explicit feedback. Rey is currently collecting references; until he shares them and discusses direction, treat the existing animation language as provisional and do not redesign it. Build original diagrams and animation rather than copying another creator's frames.
+Follow creator-supplied references and explicit feedback. Inspect available reference videos before committing to a look, and treat any style that has not yet been reviewed as provisional. Build original diagrams and animation rather than copying another creator's frames.
+
+## Desktop and terminal explainers
+
+For an episode Rey requests as a desktop or terminal simulation, treat the desktop as a setting with actions, not a decorative wallpaper behind generic cards. The ROP pixel pilot established this sequence: show a legible OS wallpaper and icons; move the cursor to Terminal and open it; type a command; then keep the terminal as the continuing workspace while the lesson progresses through a normal trace, the changed state, program code, a step-by-step chain, defenses and a recap. A Linux or Windows-inspired original interface can work. Show what the narrator is describing inside the terminal at that moment.
+
+- Keep a coherent workspace across beats so the viewer understands where each result came from. Change commands, output layout, zoom and pointer position when the state changes. A static terminal with swapped headline text is not enough.
+- Make the causal loop visible: command/input → current stack or program state → changed address → the next instruction or result. If a pointer moves, its highlight must agree with the highlighted destination.
+- Show addresses, gadgets and memory layouts as conceptual unless the project actually runs a test binary. Do not imply that arbitrary illustrative addresses or a particular overflow layout are universal.
+- Preserve room for the raised captions. If they cover a terminal footer, move or remove the footer rather than shrinking the captions back into tiny boxes.
 
 ## Rey's reference direction
 
@@ -46,7 +55,7 @@ Rey's additional Instagram reference: [ton_map reel Df-K0-xxhCZ](https://www.ins
 
 These are style references and user preferences; don't copy the referenced creators' exact designs or scenes. Resolve any conflict in favor of Rey's direct instruction.
 
-For Rey's current subtitle treatment, use Poppins 700/800, all caps, large mobile-readable type, and a per-word highlight synchronized to actual speech. Place the caption block around 70% of frame height (about y=1344 px at 1080×1920), approximately `bottom: 26%` for a one-line block; move it higher when needed to clear Instagram's description/caption UI. Check the actual multi-line block and diagram content so they remain distinct. Use line breaks and cue grouping to avoid crowded long sentences.
+For Rey's current subtitle treatment, visually match the four Claude-rendered examples he supplied in `01_SLOP_REELS/Vid`: heavy ALL-CAPS white text, thick black stroke/shadow, a yellow active word that advances with speech, and no rectangles behind individual words or behind the phrase. On the reviewed 1080×1920 frames, the two-line block sat roughly in the y=1240–1450 band; make a phone-size check instead of relying on a single CSS percentage. Use Poppins ExtraBold or a face that actually matches the reference. Hand-cut phrases by meaning, often three to six words, and keep the approved script wording and punctuation. A word-timing group of four words can cross a sentence and is not an editorial caption phrase. Move or remove nearby terminal labels that collide with the caption; keep the mechanism readable.
 
 Keep one focal event at a time, hold meaningful states long enough to read, use labels and shapes alongside color, and calibrate cuts to comprehension. Preserve stable composition where it helps compare successive mechanism states. Use portrait 1080×1920 or landscape 1920×1080 unless the brief asks otherwise.
 

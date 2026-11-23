@@ -1,4 +1,16 @@
-# V0.1 verification
+# Verification history
+
+## v0.2.2 validation (2026-11-23)
+
+- Fresh initialization into `work/reyxplainer-studio-smoke-v022`: passed; local `npm install` added 298 packages and reported 0 vulnerabilities.
+- Packaged and initialized Node tests: 7/7 passed. The new test verifies exact hand-cut phrase text and ordered word timing.
+- TypeScript check (`npx tsc --noEmit`) in the fresh project: passed.
+- The new caption script processed the ROP pilot's 189 timed words plus its manual phrase file into 46 cues and a matching SRT: passed without token mismatch.
+- Rendered and visually inspected a 1080×1920 starter-template frame with a highlighted word. White text, black outline and yellow highlight rendered without word boxes. The first smoke frame exposed overlap with the buffer legend; the template was corrected by lifting lesson content and suppressing the duplicate scene description while timed captions are present. The second frame was inspected and the legend/caption no longer collide.
+- A full 45-second render of the refreshed starter template was not run; the actual 64-second ROP episode was rendered and QA-checked in its own project before this reusable skill update.
+
+## v0.1 baseline
+
 - Node 22.16.0; npm 10.9.2.
 - Bootstrap into a new directory: passed.
 - Node test suite: 6/6 passed (duration, invalid scene timing/duplicate IDs, safe input bounds, caption bounds, caption grouping, overlapping words).

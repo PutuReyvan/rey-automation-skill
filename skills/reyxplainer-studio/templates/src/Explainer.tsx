@@ -42,11 +42,13 @@ const Beat = ({
   index,
   total,
   startSeconds,
+  showDescription,
 }: {
   scene: Scene;
   index: number;
   total: number;
   startSeconds: number;
+  showDescription: boolean;
 }) => {
   const f = useCurrentFrame();
   const {width, height, fps} = useVideoConfig();
@@ -88,7 +90,7 @@ const Beat = ({
           width: landscape ? 1600 : 900,
           left: '50%',
           top: '50%',
-          transform: `translate(-50%,-50%) scale(${landscape ? width / 1920 : scale})`,
+          transform: `translate(-50%,-50%) translateY(${showDescription ? 0 : landscape ? -35 : -150}px) scale(${landscape ? width / 1920 : scale})`,
           display: 'flex',
           flexDirection: 'column',
           gap: landscape ? 28 : 64,
@@ -128,7 +130,7 @@ const Beat = ({
             )}
           </>
         )}
-        {s.caption && (
+        {showDescription && s.caption && (
           <div
             style={{
               borderTop: '2px solid #40556a',
@@ -189,6 +191,7 @@ export const Explainer: React.FC<Episode> = (p) => {
               index={index}
               total={p.scenes.length}
               startSeconds={from / p.fps}
+              showDescription={!p.captions?.length}
             />
           </Sequence>
         );
@@ -200,23 +203,21 @@ export const Explainer: React.FC<Episode> = (p) => {
         <div
           style={{
             position: 'absolute',
-            bottom: '26%',
-            left: '8%',
-            right: '8%',
+            top: '64.6%',
+            height: '11%',
+            left: '4.4%',
+            right: '4.4%',
             textAlign: 'center',
-            fontSize: Math.round(p.width * 0.048),
+            fontSize: Math.round(p.width * (p.width < p.height ? 0.065 : 0.036)),
             fontFamily: 'Poppins, sans-serif',
-            fontWeight: 700,
+            fontWeight: 800,
             textTransform: 'uppercase',
-            background: '#0d1725',
-            color: 'white',
-            padding: 14,
-            borderRadius: 8,
             display: 'flex',
             justifyContent: 'center',
+            alignItems: 'center',
+            alignContent: 'center',
             flexWrap: 'wrap',
-            gap: '0 .28em',
-            lineHeight: 1.3,
+            lineHeight: 1.13,
           }}
         >
           {active.words?.length
@@ -224,18 +225,19 @@ export const Explainer: React.FC<Episode> = (p) => {
                 <span
                   key={`${word.start}-${index}`}
                   style={{
-                    color: index === activeWord ? '#0d1725' : '#f2f5f8',
-                    background: index === activeWord ? '#69ddbd' : 'transparent',
-                    fontWeight: index === activeWord ? 800 : 700,
-                    padding: '0 0.12em',
-                    borderRadius: 6,
-                    boxShadow: index === activeWord ? '0 0 18px #69ddbd55' : 'none',
+                    display: 'inline-block',
+                    whiteSpace: 'nowrap',
+                    marginRight: '.18em',
+                    color: index === activeWord ? '#ffca26' : '#ffffff',
+                    WebkitTextStroke: `${Math.max(3, Math.round(p.width * 0.0046))}px #101015`,
+                    paintOrder: 'stroke fill',
+                    textShadow: '3px 4px 0 #101015',
                   }}
                 >
                   {word.word}
                 </span>
               ))
-            : active.text}
+            : <span style={{color: '#ffffff', WebkitTextStroke: `${Math.max(3, Math.round(p.width * 0.0046))}px #101015`, paintOrder: 'stroke fill', textShadow: '3px 4px 0 #101015'}}>{active.text}</span>}
         </div>
       )}
     </AbsoluteFill>

@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.2.2 — Claude-style captions and desktop terminal teaching
+
+- Replaced the template's boxed teal word captions with the treatment observed in Rey's four Claude-rendered local references: large white ALL-CAPS text, thick black outline, one yellow active word, and no caption cards.
+- Added an editorial caption workflow. `scripts/captions.mjs` now emits timed word cues, accepts hand-cut phrase lines, validates that every phrase token matches the timed transcript in order, and can write SRT from the same words. Mechanical four-word groups are no longer the default.
+- Added a desktop/terminal visual grammar from the ROP pixel episode: show an actual OS workspace, visibly open Terminal, and trace normal return, overwrite, gadget chain and defenses inside that persistent setting. Mark simulated commands and addresses as illustrations.
+- Added QA requirements for caption-heavy frames, mobile placement, mechanism-label collisions and re-rendering after edits made during an export.
+- Moved the starter template's lesson content above the raised caption band and suppressed its duplicate scene-description line when timed captions are present; the new caption style was rendered and inspected in a fresh initialized project.
+- Recorded the ROP pilot as a production example; the generated episode remains in its own project folder rather than bloating the reusable skill package.
+
 ## v0.2.1 — semantic visual and presenter patch
 
 - Turned the recurring host into an active presenter with scene-specific gestures, expressions, body motion and honest word-timed mouth animation.
